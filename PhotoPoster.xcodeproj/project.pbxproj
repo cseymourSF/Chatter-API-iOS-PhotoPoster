@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* PhotoPosterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PhotoPosterAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		A37973CB13A14438006976E7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37973C913A14438006976E7 /* RootViewController.m */; };
+		A37973CC13A14438006976E7 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37973CA13A14438006976E7 /* RootViewController.xib */; };
+		A38B99E013C37EBB005BDDB2 /* PostResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B99DE13C37EBB005BDDB2 /* PostResultController.m */; };
+		A38B99E113C37EBB005BDDB2 /* PostResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38B99DF13C37EBB005BDDB2 /* PostResultController.xib */; };
+		A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */; };
+		A3CF797913C270D400AB49D3 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796A13C270C400AB49D3 /* libRestKitSupport.a */; };
+		A3CF797C13C270DA00AB49D3 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796813C270C400AB49D3 /* libRestKitObjectMapping.a */; };
+		A3CF797E13C270E200AB49D3 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796613C270C400AB49D3 /* libRestKitNetwork.a */; };
+		A3CF797F13C270E400AB49D3 /* libRestKitJSONParserYAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796C13C270C400AB49D3 /* libRestKitJSONParserYAJL.a */; };
+		A3CF798813C2710A00AB49D3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF798713C2710A00AB49D3 /* CFNetwork.framework */; };
+		A3CF798C13C2711800AB49D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */; };
+		A3CF799013C2712300AB49D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */; };
+		A3CF79A013C272FE00AB49D3 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF799F13C272FE00AB49D3 /* User.m */; };
+		A3CF79B113C2751000AB49D3 /* GroupPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF79B013C2751000AB49D3 /* GroupPickerController.m */; };
+		A3CF79B313C2751D00AB49D3 /* GroupPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3CF79B213C2751D00AB49D3 /* GroupPickerController.xib */; };
+		A3CF79B913C277DA00AB49D3 /* AuthContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF79B813C277DA00AB49D3 /* AuthContext.m */; };
+		A3CF7BC013C2DC6E00AB49D3 /* ObjectFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF7BBF13C2DC6E00AB49D3 /* ObjectFetcher.m */; };
+		A3CF7BC513C2DDCF00AB49D3 /* GroupsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF7BC413C2DDCF00AB49D3 /* GroupsPage.m */; };
+		A3CF7BC813C2DE0400AB49D3 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF7BC713C2DE0400AB49D3 /* Group.m */; };
+		A3CF7C8513C2EAE700AB49D3 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CF7C8313C2EAE700AB49D3 /* ImagePickerViewController.m */; };
+		A3CF7C8613C2EAE700AB49D3 /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3CF7C8413C2EAE700AB49D3 /* ImagePickerViewController.xib */; };
+		A3FFC5D813C2334700015CF4 /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FFC5D613C2334700015CF4 /* OAuthViewController.m */; };
+		A3FFC5D913C2334700015CF4 /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FFC5D713C2334700015CF4 /* OAuthViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A3CF796513C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A07FC1255161B00976E89;
+			remoteInfo = RestKitNetwork;
+		};
+		A3CF796713C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A08031255162C00976E89;
+			remoteInfo = RestKitObjectMapping;
+		};
+		A3CF796913C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A080C12551D3000976E89;
+			remoteInfo = RestKitSupport;
+		};
+		A3CF796B13C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2590E64F125231F600531FA8;
+			remoteInfo = "RestKitJSONParser+YAJL";
+		};
+		A3CF796D13C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2590E66B1252353700531FA8;
+			remoteInfo = "RestKitJSONParser+SBJSON";
+		};
+		A3CF796F13C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73057FD11331AD2E001908EE;
+			remoteInfo = "RestKitJSONParser+JSONKit";
+		};
+		A3CF797113C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25BD43BD1340315800DBACDD;
+			remoteInfo = "RestKitXMLParser+Libxml";
+		};
+		A3CF797313C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 253A081412551D5300976E89;
+			remoteInfo = RestKitCoreData;
+		};
+		A3CF797513C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2523360511E79F090048F9B4;
+			remoteInfo = RestKitThree20;
+		};
+		A3CF797713C270C400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3F6C39A510FE5C95008F47C5;
+			remoteInfo = UISpec;
+		};
+		A3CF799313C2716400AB49D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
+			remoteInfo = RestKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* PhotoPosterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPosterAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* PhotoPosterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPosterAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* PhotoPoster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPoster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPoster_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* PhotoPoster-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoPoster-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A37973C813A14438006976E7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A37973C913A14438006976E7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A37973CA13A14438006976E7 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = Classes/RootViewController.xib; sourceTree = "<group>"; };
+		A38B99DD13C37EBB005BDDB2 /* PostResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostResultController.h; sourceTree = "<group>"; };
+		A38B99DE13C37EBB005BDDB2 /* PostResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostResultController.m; sourceTree = "<group>"; };
+		A38B99DF13C37EBB005BDDB2 /* PostResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostResultController.xib; path = Classes/PostResultController.xib; sourceTree = "<group>"; };
+		A38B9B4313C3AA2A005BDDB2 /* PhotoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFetcher.h; sourceTree = "<group>"; };
+		A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFetcher.m; sourceTree = "<group>"; };
+		A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = Classes/RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		A3CF798713C2710A00AB49D3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A3CF799E13C272FE00AB49D3 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		A3CF799F13C272FE00AB49D3 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A3CF79AF13C2751000AB49D3 /* GroupPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPickerController.h; sourceTree = "<group>"; };
+		A3CF79B013C2751000AB49D3 /* GroupPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPickerController.m; sourceTree = "<group>"; };
+		A3CF79B213C2751D00AB49D3 /* GroupPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupPickerController.xib; sourceTree = "<group>"; };
+		A3CF79B713C277DA00AB49D3 /* AuthContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthContext.h; sourceTree = "<group>"; };
+		A3CF79B813C277DA00AB49D3 /* AuthContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthContext.m; sourceTree = "<group>"; };
+		A3CF7BBE13C2DC6E00AB49D3 /* ObjectFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectFetcher.h; sourceTree = "<group>"; };
+		A3CF7BBF13C2DC6E00AB49D3 /* ObjectFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectFetcher.m; sourceTree = "<group>"; };
+		A3CF7BC313C2DDCF00AB49D3 /* GroupsPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsPage.h; sourceTree = "<group>"; };
+		A3CF7BC413C2DDCF00AB49D3 /* GroupsPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsPage.m; sourceTree = "<group>"; };
+		A3CF7BC613C2DE0400AB49D3 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		A3CF7BC713C2DE0400AB49D3 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		A3CF7C8213C2EAE700AB49D3 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		A3CF7C8313C2EAE700AB49D3 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		A3CF7C8413C2EAE700AB49D3 /* ImagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ImagePickerViewController.xib; path = Classes/ImagePickerViewController.xib; sourceTree = "<group>"; };
+		A3FFC5D513C2334700015CF4 /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthViewController.h; sourceTree = "<group>"; };
+		A3FFC5D613C2334700015CF4 /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthViewController.m; sourceTree = "<group>"; };
+		A3FFC5D713C2334700015CF4 /* OAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OAuthViewController.xib; path = Classes/OAuthViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				A3CF797913C270D400AB49D3 /* libRestKitSupport.a in Frameworks */,
+				A3CF797C13C270DA00AB49D3 /* libRestKitObjectMapping.a in Frameworks */,
+				A3CF797E13C270E200AB49D3 /* libRestKitNetwork.a in Frameworks */,
+				A3CF797F13C270E400AB49D3 /* libRestKitJSONParserYAJL.a in Frameworks */,
+				A3CF798813C2710A00AB49D3 /* CFNetwork.framework in Frameworks */,
+				A3CF798C13C2711800AB49D3 /* SystemConfiguration.framework in Frameworks */,
+				A3CF799013C2712300AB49D3 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF7C7D13C2EAC000AB49D3 /* Top Level */,
+				A3CF7C7C13C2EAB900AB49D3 /* Helpers */,
+				A3CF7C7B13C2EAAD00AB49D3 /* View Controllers */,
+				A3CF799D13C272E100AB49D3 /* Rest Objects */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* PhotoPoster.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				A3CF798713C2710A00AB49D3 /* CFNetwork.framework */,
+				A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */,
+				A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A38B99DF13C37EBB005BDDB2 /* PostResultController.xib */,
+				A3CF7C8413C2EAE700AB49D3 /* ImagePickerViewController.xib */,
+				A3CF79B213C2751D00AB49D3 /* GroupPickerController.xib */,
+				A3FFC5D713C2334700015CF4 /* OAuthViewController.xib */,
+				A37973CA13A14438006976E7 /* RootViewController.xib */,
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* PhotoPoster-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3CF795213C270C300AB49D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF796613C270C400AB49D3 /* libRestKitNetwork.a */,
+				A3CF796813C270C400AB49D3 /* libRestKitObjectMapping.a */,
+				A3CF796A13C270C400AB49D3 /* libRestKitSupport.a */,
+				A3CF796C13C270C400AB49D3 /* libRestKitJSONParserYAJL.a */,
+				A3CF796E13C270C400AB49D3 /* libRestKitJSONParserSBJSON.a */,
+				A3CF797013C270C400AB49D3 /* libRestKitJSONParserJSONKit.a */,
+				A3CF797213C270C400AB49D3 /* libRestKitXMLParserLibxml.a */,
+				A3CF797413C270C400AB49D3 /* libRestKitCoreData.a */,
+				A3CF797613C270C400AB49D3 /* libRestKitThree20.a */,
+				A3CF797813C270C400AB49D3 /* UISpec.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3CF799D13C272E100AB49D3 /* Rest Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF799E13C272FE00AB49D3 /* User.h */,
+				A3CF799F13C272FE00AB49D3 /* User.m */,
+				A3CF7BBE13C2DC6E00AB49D3 /* ObjectFetcher.h */,
+				A3CF7BBF13C2DC6E00AB49D3 /* ObjectFetcher.m */,
+				A3CF7BC313C2DDCF00AB49D3 /* GroupsPage.h */,
+				A3CF7BC413C2DDCF00AB49D3 /* GroupsPage.m */,
+				A3CF7BC613C2DE0400AB49D3 /* Group.h */,
+				A3CF7BC713C2DE0400AB49D3 /* Group.m */,
+			);
+			name = "Rest Objects";
+			sourceTree = "<group>";
+		};
+		A3CF7C7B13C2EAAD00AB49D3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF79AF13C2751000AB49D3 /* GroupPickerController.h */,
+				A3CF79B013C2751000AB49D3 /* GroupPickerController.m */,
+				A37973C813A14438006976E7 /* RootViewController.h */,
+				A37973C913A14438006976E7 /* RootViewController.m */,
+				A3FFC5D513C2334700015CF4 /* OAuthViewController.h */,
+				A3FFC5D613C2334700015CF4 /* OAuthViewController.m */,
+				A3CF7C8213C2EAE700AB49D3 /* ImagePickerViewController.h */,
+				A3CF7C8313C2EAE700AB49D3 /* ImagePickerViewController.m */,
+				A38B99DD13C37EBB005BDDB2 /* PostResultController.h */,
+				A38B99DE13C37EBB005BDDB2 /* PostResultController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A3CF7C7C13C2EAB900AB49D3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A3CF79B713C277DA00AB49D3 /* AuthContext.h */,
+				A3CF79B813C277DA00AB49D3 /* AuthContext.m */,
+				A38B9B4313C3AA2A005BDDB2 /* PhotoFetcher.h */,
+				A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A3CF7C7D13C2EAC000AB49D3 /* Top Level */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* PhotoPosterAppDelegate.h */,
+				1D3623250D0F684500981E51 /* PhotoPosterAppDelegate.m */,
+			);
+			name = "Top Level";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* PhotoPoster */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PhotoPoster" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CF799413C2716400AB49D3 /* PBXTargetDependency */,
+			);
+			name = PhotoPoster;
+			productName = PhotoPoster;
+			productReference = 1D6058910D05DD3D006BFB54 /* PhotoPoster.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PhotoPoster" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A3CF795213C270C300AB49D3 /* Products */;
+					ProjectRef = A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* PhotoPoster */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A3CF796613C270C400AB49D3 /* libRestKitNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitNetwork.a;
+			remoteRef = A3CF796513C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF796813C270C400AB49D3 /* libRestKitObjectMapping.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitObjectMapping.a;
+			remoteRef = A3CF796713C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF796A13C270C400AB49D3 /* libRestKitSupport.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitSupport.a;
+			remoteRef = A3CF796913C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF796C13C270C400AB49D3 /* libRestKitJSONParserYAJL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserYAJL.a;
+			remoteRef = A3CF796B13C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF796E13C270C400AB49D3 /* libRestKitJSONParserSBJSON.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserSBJSON.a;
+			remoteRef = A3CF796D13C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF797013C270C400AB49D3 /* libRestKitJSONParserJSONKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitJSONParserJSONKit.a;
+			remoteRef = A3CF796F13C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF797213C270C400AB49D3 /* libRestKitXMLParserLibxml.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitXMLParserLibxml.a;
+			remoteRef = A3CF797113C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF797413C270C400AB49D3 /* libRestKitCoreData.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitCoreData.a;
+			remoteRef = A3CF797313C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF797613C270C400AB49D3 /* libRestKitThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKitThree20.a;
+			remoteRef = A3CF797513C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A3CF797813C270C400AB49D3 /* UISpec.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = UISpec.app;
+			remoteRef = A3CF797713C270C400AB49D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				A37973CC13A14438006976E7 /* RootViewController.xib in Resources */,
+				A3FFC5D913C2334700015CF4 /* OAuthViewController.xib in Resources */,
+				A3CF79B313C2751D00AB49D3 /* GroupPickerController.xib in Resources */,
+				A3CF7C8613C2EAE700AB49D3 /* ImagePickerViewController.xib in Resources */,
+				A38B99E113C37EBB005BDDB2 /* PostResultController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* PhotoPosterAppDelegate.m in Sources */,
+				A37973CB13A14438006976E7 /* RootViewController.m in Sources */,
+				A3FFC5D813C2334700015CF4 /* OAuthViewController.m in Sources */,
+				A3CF79A013C272FE00AB49D3 /* User.m in Sources */,
+				A3CF79B113C2751000AB49D3 /* GroupPickerController.m in Sources */,
+				A3CF79B913C277DA00AB49D3 /* AuthContext.m in Sources */,
+				A3CF7BC013C2DC6E00AB49D3 /* ObjectFetcher.m in Sources */,
+				A3CF7BC513C2DDCF00AB49D3 /* GroupsPage.m in Sources */,
+				A3CF7BC813C2DE0400AB49D3 /* Group.m in Sources */,
+				A3CF7C8513C2EAE700AB49D3 /* ImagePickerViewController.m in Sources */,
+				A38B99E013C37EBB005BDDB2 /* PostResultController.m in Sources */,
+				A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A3CF799413C2716400AB49D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = A3CF799313C2716400AB49D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/RestKit/Specs/Runner\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoPoster_Prefix.pch;
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
+				INFOPLIST_FILE = "PhotoPoster-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = PhotoPoster;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/RestKit/Specs/Runner\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoPoster_Prefix.pch;
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
+				INFOPLIST_FILE = "PhotoPoster-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = PhotoPoster;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PhotoPoster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PhotoPoster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
