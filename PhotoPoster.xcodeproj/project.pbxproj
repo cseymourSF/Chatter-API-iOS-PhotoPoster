@@ -18,6 +18,10 @@
 		A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */; };
 		A3BCBD6913C403CE006D4483 /* PhotoPosterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */; };
 		A3BCBD6A13C403CE006D4483 /* PhotoPosterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */; };
+		A3BCBE5313C4E854006D4483 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBE5113C4E854006D4483 /* GroupViewController.m */; };
+		A3BCBE5413C4E854006D4483 /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BCBE5213C4E854006D4483 /* GroupViewController.xib */; };
+		A3BCBE9E13C4ED93006D4483 /* FeedItemPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBE9D13C4ED93006D4483 /* FeedItemPage.m */; };
+		A3BCBEA113C4EDAB006D4483 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBEA013C4EDAB006D4483 /* FeedItem.m */; };
 		A3CF797913C270D400AB49D3 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796A13C270C400AB49D3 /* libRestKitSupport.a */; };
 		A3CF797C13C270DA00AB49D3 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796813C270C400AB49D3 /* libRestKitObjectMapping.a */; };
 		A3CF797E13C270E200AB49D3 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CF796613C270C400AB49D3 /* libRestKitNetwork.a */; };
@@ -137,6 +141,13 @@
 		A3BCBD6613C403CE006D4483 /* PhotoPosterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPosterController.h; sourceTree = "<group>"; };
 		A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPosterController.m; sourceTree = "<group>"; };
 		A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoPosterController.xib; path = Classes/PhotoPosterController.xib; sourceTree = "<group>"; };
+		A3BCBE5013C4E854006D4483 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		A3BCBE5113C4E854006D4483 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		A3BCBE5213C4E854006D4483 /* GroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GroupViewController.xib; path = Classes/GroupViewController.xib; sourceTree = "<group>"; };
+		A3BCBE9C13C4ED93006D4483 /* FeedItemPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemPage.h; sourceTree = "<group>"; };
+		A3BCBE9D13C4ED93006D4483 /* FeedItemPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemPage.m; sourceTree = "<group>"; };
+		A3BCBE9F13C4EDAB006D4483 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
+		A3BCBEA013C4EDAB006D4483 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
 		A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = Classes/RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		A3CF798713C2710A00AB49D3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -230,6 +241,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3BCBE5213C4E854006D4483 /* GroupViewController.xib */,
 				A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */,
 				A3CF7C8413C2EAE700AB49D3 /* ImagePickerViewController.xib */,
 				A3CF79B213C2751D00AB49D3 /* GroupPickerController.xib */,
@@ -279,6 +291,10 @@
 				A3CF7BC413C2DDCF00AB49D3 /* GroupsPage.m */,
 				A3CF7BC613C2DE0400AB49D3 /* Group.h */,
 				A3CF7BC713C2DE0400AB49D3 /* Group.m */,
+				A3BCBE9C13C4ED93006D4483 /* FeedItemPage.h */,
+				A3BCBE9D13C4ED93006D4483 /* FeedItemPage.m */,
+				A3BCBE9F13C4EDAB006D4483 /* FeedItem.h */,
+				A3BCBEA013C4EDAB006D4483 /* FeedItem.m */,
 			);
 			name = "Rest Objects";
 			sourceTree = "<group>";
@@ -296,6 +312,8 @@
 				A3CF7C8313C2EAE700AB49D3 /* ImagePickerViewController.m */,
 				A3BCBD6613C403CE006D4483 /* PhotoPosterController.h */,
 				A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */,
+				A3BCBE5013C4E854006D4483 /* GroupViewController.h */,
+				A3BCBE5113C4E854006D4483 /* GroupViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -456,6 +474,7 @@
 				A3CF79B313C2751D00AB49D3 /* GroupPickerController.xib in Resources */,
 				A3CF7C8613C2EAE700AB49D3 /* ImagePickerViewController.xib in Resources */,
 				A3BCBD6A13C403CE006D4483 /* PhotoPosterController.xib in Resources */,
+				A3BCBE5413C4E854006D4483 /* GroupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +498,9 @@
 				A3CF7C8513C2EAE700AB49D3 /* ImagePickerViewController.m in Sources */,
 				A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */,
 				A3BCBD6913C403CE006D4483 /* PhotoPosterController.m in Sources */,
+				A3BCBE5313C4E854006D4483 /* GroupViewController.m in Sources */,
+				A3BCBE9E13C4ED93006D4483 /* FeedItemPage.m in Sources */,
+				A3BCBEA113C4EDAB006D4483 /* FeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

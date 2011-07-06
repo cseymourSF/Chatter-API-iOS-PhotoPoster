@@ -17,11 +17,13 @@
 @synthesize name;
 @synthesize url;
 @synthesize visibility;
+@synthesize largePhotoUrl;
 
 + (RKObjectMapping*)objectMapping {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Group class]];
 	[mapping mapAttributes:@"description", @"memberCount", @"name", @"url", @"visibility", nil];
 	[mapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"id" toKeyPath:@"groupId"]];
+	[mapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"photo.largePhotoUrl" toKeyPath:@"largePhotoUrl"]];
 	return mapping;
 }
 

@@ -14,7 +14,7 @@
 #import "PhotoFetcher.h"
 
 @interface RootViewController : UIViewController<RKObjectLoaderDelegate, PhotoFetcherDelegate> {
-	UIButton* postBtn;
+	UIButton* exploreBtn;
 	UILabel* stateLbl;
 	UILabel* nameLbl;
 	UILabel* titleLbl;
@@ -25,7 +25,7 @@
 	PhotoFetcher* photoFetcher;
 }
 
-@property (nonatomic, retain) IBOutlet UIButton* postBtn;
+@property (nonatomic, retain) IBOutlet UIButton* exploreBtn;
 @property (nonatomic, retain) IBOutlet UILabel* stateLbl;
 @property (nonatomic, retain) IBOutlet UILabel* nameLbl;
 @property (nonatomic, retain) IBOutlet UILabel* titleLbl;
@@ -35,6 +35,6 @@
 - (void)initRestKit;
 - (IBAction)login:(id)sender;
 - (IBAction)logout:(id)sender;
-- (IBAction)postPhotoToGroup:(id)sender;
+- (IBAction)exploreGroups:(id)sender;
 
 @end

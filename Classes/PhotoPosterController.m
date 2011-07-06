@@ -7,7 +7,6 @@
 //
 
 #import "PhotoPosterController.h"
-#import "GroupPickerController.h"
 #import "ImagePickerViewController.h"
 #import "AuthContext.h"
 
@@ -20,16 +19,15 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 @synthesize image;
-@synthesize group;
 @synthesize imageView;
-@synthesize groupLbl;
 @synthesize descField;
 @synthesize messageField;
 @synthesize postBtn;
 
-- (id)init {
+- (id)initWithGroup:(Group*)groupIn {
 	self = [super initWithNibName:@"PhotoPosterController" bundle:nil];
 	if (self != nil) {
+		group = [groupIn retain];
 		keyboardOffset = 0;
 	}
 	return self;
@@ -39,7 +37,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[image release];
 	[group release];
 	[imageView release];
-	[groupLbl release];
 	[descField release];
 	[messageField release];
 	[postBtn release];
@@ -52,9 +49,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[self.imageView setImage:self.image];
-	[self.groupLbl setText:[self.group name]];
 	
-	if (self.image != nil && self.group != nil) {
+	if (self.image != nil) {
 		[postBtn setEnabled:YES];
 		[postBtn setAlpha:1.0];
 	} else {
@@ -84,12 +80,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[self.messageField resignFirstResponder];
 }
 
-- (IBAction)chooseGroup:(id)sender {
-	[self recenter];
-	
-	[self.navigationController pushViewController:[[[GroupPickerController alloc] initWithParent:self] autorelease] animated:YES];
-}
-
 - (IBAction)choosePhoto:(id)sender {
 	[self recenter];
 	
@@ -106,7 +96,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	
 	// Post the photo to the group, using a regular HTTP POST because
 	// RestKit doesn't support multipart posts yet.
-	NSString* targetUrl = [NSString stringWithFormat:@"%@/services/data/v22.0/chatter/feeds/record/%@/feed-items", [[AuthContext context] instanceUrl], [self.group groupId]];
+	NSString* targetUrl = [NSString stringWithFormat:@"%@/services/data/v22.0/chatter/feeds/record/%@/feed-items", [[AuthContext context] instanceUrl], group.groupId];
 	
 	// Make the request.
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:targetUrl]
@@ -199,6 +189,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	// TODO: Use RestKit to translate response into a feed item representation...
 	
 	[self clearConnectionState];
+	
+	// Pop out.
+	// TODO: Do this on Alert completion?
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 // =================

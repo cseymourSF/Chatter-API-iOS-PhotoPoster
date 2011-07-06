@@ -14,7 +14,7 @@
 	NSString* nextPageUrl;
 	NSString* previousPageUrl;
 	int total;
-	NSArray* groups;
+	NSArray* groups; // Holds Groups
 }
 
 @property(nonatomic, retain) NSString* currentPageUrl;

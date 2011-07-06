@@ -9,15 +9,15 @@
 #import "GroupPickerController.h"
 #import "AuthContext.h"
 #import "PhotoPosterController.h"
+#import "GroupViewController.h"
 
 @implementation GroupPickerController
 
 @synthesize tableView;
 
--(id)initWithParent:(PhotoPosterController*)parentIn {
+-(id)init {
 	self = [super initWithNibName:@"GroupPickerController" bundle:nil];
 	if (self != nil) {
-		parent = parentIn;
 	}
 	return self;
 }
@@ -69,12 +69,10 @@
 // UITableViewDelegate implementation.
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Set group on parent.
+	// Push in a new GroupViewController using the selected group.
 	Group* selectedGroup = [[followedGroups groups] objectAtIndex:indexPath.row];
-	[parent setGroup:selectedGroup];
-
-	// Exit.
-	[[self navigationController] popViewControllerAnimated:YES];
+	GroupViewController* groupViewController = [[[GroupViewController alloc] initWithGroup:selectedGroup] autorelease];
+	[self.navigationController pushViewController:groupViewController animated:YES];
 }
 
 @end

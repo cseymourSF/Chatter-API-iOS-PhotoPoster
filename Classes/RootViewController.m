@@ -7,15 +7,18 @@
 //
 
 #import "include/RestKit/RestKit.h"
+
 #import "AuthContext.h"
 #import "RootViewController.h"
+#import "GroupPickerController.h"
+
 #import "User.h"
 #import "GroupsPage.h"
-#import "PhotoPosterController.h"
+#import "FeedItemPage.h"
 
 @implementation RootViewController
 
-@synthesize postBtn;
+@synthesize exploreBtn;
 @synthesize stateLbl;
 @synthesize nameLbl;
 @synthesize titleLbl;
@@ -23,7 +26,7 @@
 @synthesize infoView;
 
 - (void)dealloc {
-	[postBtn release];
+	[exploreBtn release];
 	[stateLbl release];
 	[nameLbl release];
 	[titleLbl release];
@@ -37,7 +40,6 @@
 }
 	
 - (void)updateUi {
-	NSLog(@"UpdateUi Start");
 	// Clear the UI.
 	[nameLbl setText:@""];
 	[titleLbl setText:@""];
@@ -45,26 +47,23 @@
 	
 	if ([[AuthContext context] accessToken] == nil) {
 		[stateLbl setText:@"Not logged in"];
-		[postBtn setEnabled:FALSE];
-		[postBtn setAlpha:0.5];
+		[exploreBtn setEnabled:FALSE];
+		[exploreBtn setAlpha:0.5];
 		[infoView setHidden:TRUE];
 	} else {
 		// TODO: Verify the token actually works...
 		
 		[stateLbl setText:@"Logged in"];
-		[postBtn setEnabled:TRUE];
-		[postBtn setAlpha:1.0];
+		[exploreBtn setEnabled:TRUE];
+		[exploreBtn setAlpha:1.0];
 		[infoView setHidden:FALSE];
 	}
-	NSLog(@"UpdateUi end");
 }
 
 - (void)viewWillAppear:(BOOL)animated {	
-	NSLog(@"ViewWillAppear start");
 	[self updateUi];
 	
 	[super viewWillAppear:animated];
-	NSLog(@"ViewWillAppear end");
 }
 
 - (void)viewDidAppear:(BOOL)animated {	
@@ -108,8 +107,8 @@
 	[self updateUi];
 }
 
-- (IBAction)postPhotoToGroup:(id)sender {
-	[[self navigationController] pushViewController:[[[PhotoPosterController alloc] init] autorelease] animated:YES];
+- (IBAction)exploreGroups:(id)sender {
+	[[self navigationController] pushViewController:[[[GroupPickerController alloc] init] autorelease] animated:YES];
 }
 
 - (void)initRestKit {
@@ -120,6 +119,7 @@
 	// Initialize mappings.
 	[User setupMapping:manager];
 	[GroupsPage setupMapping:manager];
+	[FeedItemPage setupMapping:manager];
 	
 	// RestKit logging.
 	RKLogConfigureByName("RestKit", RKLogLevelDebug);
