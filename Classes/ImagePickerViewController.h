@@ -8,22 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@class GroupPickerController;
+@class PhotoPosterController;
 
 @interface ImagePickerViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 	UIImageView* imageView;
-	UIButton* postButton;
+	UIButton* useBtn;
 	
-	GroupPickerController* parent; // not retained
+	PhotoPosterController* parent; // not retained
 }
 
 @property(nonatomic, retain) IBOutlet UIImageView* imageView;
-@property(nonatomic, retain) IBOutlet UIButton* postButton;
+@property(nonatomic, retain) IBOutlet UIButton* useBtn;
 
--(id)initWithParent:(GroupPickerController*)parentIn;
+-(id)initWithParent:(PhotoPosterController*)parentIn;
+
 -(IBAction)snapCameraPhoto:(id)sender;
 -(IBAction)pickLibraryPhoto:(id)sender;
--(IBAction)postPhoto:(id)sender;
--(IBAction)cancel:(id)sender;
+-(IBAction)usePhoto:(id)sender;
 
 @end

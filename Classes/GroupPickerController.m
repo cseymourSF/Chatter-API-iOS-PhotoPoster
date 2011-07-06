@@ -7,32 +7,25 @@
 //
 
 #import "GroupPickerController.h"
-#import "User.h"
 #import "AuthContext.h"
-#import "PostResultController.h"
+#import "PhotoPosterController.h"
 
 @implementation GroupPickerController
 
-@synthesize nameLbl;
-@synthesize titleLbl;
 @synthesize tableView;
-@synthesize photo;
 
-- (id)init {
+-(id)initWithParent:(PhotoPosterController*)parentIn {
 	self = [super initWithNibName:@"GroupPickerController" bundle:nil];
 	if (self != nil) {
+		parent = parentIn;
 	}
 	return self;
 }
 
 - (void)dealloc {
-	[nameLbl release];
-	[titleLbl release];
 	[groupsFetcher release];
-	[currentGroups release];
+	[followedGroups release];
 	[tableView release];
-	[imagePickerController release];
-	[photo release];
 	
     [super dealloc];
 }
@@ -40,26 +33,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 		
-	// Request population of groups page by RestKit.
-	currentGroups = [[GroupsPage alloc] init];
-	groupsFetcher = [[ObjectFetcher alloc] initWithTag:@"groups" object:currentGroups delegate:self];
+	// Request population of first followed groups page.
+	followedGroups = [[GroupsPage alloc] init];
+	groupsFetcher = [[ObjectFetcher alloc] initWithTag:@"groups" object:followedGroups delegate:self];
 	[groupsFetcher fetch];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	
-	if (self.photo != nil) {
-		// Push on the PostResultController and reset state so this view controller can be re-used later.
-		PostResultController* postResultController = [[[PostResultController alloc] initWithGroup:selectedGroup image:photo] autorelease];
-		[self reset];
-		[self.navigationController pushViewController:postResultController animated:YES];
-	}
-}
-
-- (void)reset {
-	self.photo = nil;
-	selectedGroup = nil;
 }
 
 // ObjectFetcherDelegate implementation.
@@ -72,32 +49,32 @@
 	NSString* cellIdent = @"groupListCell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
-	if (cell == nil) 
-	{
+	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent] autorelease];
 	}
 	
-	Group* group = [[currentGroups groups] objectAtIndex:indexPath.row];
+	Group* group = [[followedGroups groups] objectAtIndex:indexPath.row];
 	[[cell textLabel] setText:[group name]];
 	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (currentGroups == nil || section != 0) {
+	if (followedGroups == nil || section != 0) {
 		return 0;
 	} else {
-		return [[currentGroups groups] count];
+		return [[followedGroups groups] count];
 	}
 }
 
 // UITableViewDelegate implementation.
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	selectedGroup = [[currentGroups groups] objectAtIndex:indexPath.row];
+	// Set group on parent.
+	Group* selectedGroup = [[followedGroups groups] objectAtIndex:indexPath.row];
+	[parent setGroup:selectedGroup];
 
-	// Show image picker.
-	imagePickerController = [[ImagePickerViewController alloc] initWithParent:self];
-	[[self navigationController] pushViewController:imagePickerController animated:YES];
+	// Exit.
+	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end

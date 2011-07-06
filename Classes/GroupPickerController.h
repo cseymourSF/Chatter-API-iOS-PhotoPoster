@@ -6,28 +6,20 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "User.h"
 #import "GroupsPage.h"
 #import "ObjectFetcher.h"
-#import "ImagePickerViewController.h";
+
+@class PhotoPosterController;
 
 @interface GroupPickerController : UIViewController<ObjectFetcherDelegate, UITableViewDataSource, UITableViewDelegate> {
-	UITableView* tableView;
-	
-	ImagePickerViewController* imagePickerController;
-	
-	UIImage* photo;
-	
-	GroupsPage* currentGroups;
+	UITableView* tableView;	
+	GroupsPage* followedGroups;
 	ObjectFetcher* groupsFetcher;
-	Group* selectedGroup; // not retained.
+	PhotoPosterController* parent; // not retained
 }
 
-- (void)reset;
-
-@property (nonatomic, retain) UIImage* photo;
-@property (nonatomic, retain) IBOutlet UILabel* nameLbl;
-@property (nonatomic, retain) IBOutlet UILabel* titleLbl;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
+
+-(id)initWithParent:(PhotoPosterController*)parentIn;
 
 @end

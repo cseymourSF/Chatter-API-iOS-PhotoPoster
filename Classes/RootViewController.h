@@ -13,7 +13,7 @@
 #import "User.h"
 #import "PhotoFetcher.h"
 
-@interface RootViewController : UIViewController<RKObjectLoaderDelegate, PhotoFetcherDelegate, OAuthViewControllerDelegate> {
+@interface RootViewController : UIViewController<RKObjectLoaderDelegate, PhotoFetcherDelegate> {
 	UIButton* postBtn;
 	UILabel* stateLbl;
 	UILabel* nameLbl;
@@ -23,9 +23,6 @@
 	
 	User* user;
 	PhotoFetcher* photoFetcher;
-	
-	OAuthViewController* oauthViewController;
-	GroupPickerController* groupPickerController;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton* postBtn;

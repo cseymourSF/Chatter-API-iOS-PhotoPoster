@@ -16,10 +16,7 @@
 
 - (id)initWithLoginUrl:(NSString*)loginUrl 
            callbackUrl:(NSString*)callbackUrlIn
-           consumerKey:(NSString*)consumerKey
-              delegate:(id<OAuthViewControllerDelegate>)delegateIn {
-	
-	delegate = delegateIn;
+           consumerKey:(NSString*)consumerKey {
 	callbackUrl = [[NSURL URLWithString:callbackUrlIn] retain];
 	
 	// URL-encode the callback URL.
@@ -29,9 +26,9 @@
 						   loginUrl, consumerKey, encodedCallbackUrl];
 	
 	// Make the request.
-	loginRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:targetUrl]
+	loginRequest = [[NSMutableURLRequest requestWithURL:[NSURL URLWithString:targetUrl]
 										   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData // Don't use the cache.
-									   timeoutInterval:60];
+									   timeoutInterval:60] retain];
 	
 	// Load up UI.
 	self = [self initWithNibName:@"OAuthViewController" bundle:nil];
@@ -92,12 +89,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 		[context setInstanceUrl:instanceUrl];
 		[context save];
 		
-		// Report that we succeeded.
-		[delegate authCompleted];
-		
-		// Clear the current location in the web view.
-		[webViewIn stringByEvaluatingJavaScriptFromString:@"window.location.replace();"];
-		
 		// Pop back out.
 		[self.navigationController popViewControllerAnimated:YES];
 		
@@ -112,7 +103,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 - (void)dealloc {
 	[self.webView release];
 	[loginRequest release];
-	[delegate release];
 	[callbackUrl release];
 	
     [super dealloc];

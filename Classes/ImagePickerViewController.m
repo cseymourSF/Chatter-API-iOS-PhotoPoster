@@ -7,14 +7,14 @@
 //
 
 #import "ImagePickerViewController.h"
-#import "GroupPickerController.h"
+#import "PhotoPosterController.h"
 
 @implementation ImagePickerViewController
 
 @synthesize imageView;
-@synthesize postButton;
+@synthesize useBtn;
 
-- (id)initWithParent:(GroupPickerController*)parentIn {
+- (id)initWithParent:(PhotoPosterController*)parentIn {
 	self = [super initWithNibName:@"ImagePickerViewController" bundle:nil];
 	if (self != nil) {
 		parent = parentIn;
@@ -22,9 +22,15 @@
 	return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[self.postButton setEnabled:([self.imageView image] != nil)];
+- (void)dealloc {
+	[imageView release];
+	[useBtn release];
 	
+    [super dealloc];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[self.useBtn setEnabled:([self.imageView image] != nil)];
 	[super viewWillAppear:animated];
 }
 
@@ -44,13 +50,10 @@
 	[self presentModalViewController:picker animated:YES];
 }
 
--(IBAction)postPhoto:(id)sender {
-	[parent setPhoto:imageView.image];
+-(IBAction)usePhoto:(id)sender {
+	[parent setImage:imageView.image];
 	
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
--(IBAction)cancel:(id)sender {
+	// Exit.
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -64,13 +67,6 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {	
 	[picker dismissModalViewControllerAnimated:YES];
-}
-
-- (void)dealloc {
-	[imageView release];
-	[postButton release];
-	
-    [super dealloc];
 }
 
 @end

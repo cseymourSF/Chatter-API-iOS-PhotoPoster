@@ -11,6 +11,7 @@
 #import "RootViewController.h"
 #import "User.h"
 #import "GroupsPage.h"
+#import "PhotoPosterController.h"
 
 @implementation RootViewController
 
@@ -20,13 +21,6 @@
 @synthesize titleLbl;
 @synthesize picView;
 @synthesize infoView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self != nil) {
-	}
-	return self;
-}
 
 - (void)dealloc {
 	[postBtn release];
@@ -38,13 +32,12 @@
 	
 	[user release];
 	[photoFetcher release];
-	[oauthViewController release];
-	[groupPickerController release];
 	
     [super dealloc];
 }
 	
 - (void)updateUi {
+	NSLog(@"UpdateUi Start");
 	// Clear the UI.
 	[nameLbl setText:@""];
 	[titleLbl setText:@""];
@@ -53,22 +46,32 @@
 	if ([[AuthContext context] accessToken] == nil) {
 		[stateLbl setText:@"Not logged in"];
 		[postBtn setEnabled:FALSE];
+		[postBtn setAlpha:0.5];
 		[infoView setHidden:TRUE];
 	} else {
-		// TODO: Verify the token works!
-		[self authCompleted];
+		// TODO: Verify the token actually works...
+		
+		[stateLbl setText:@"Logged in"];
+		[postBtn setEnabled:TRUE];
+		[postBtn setAlpha:1.0];
 		[infoView setHidden:FALSE];
 	}
+	NSLog(@"UpdateUi end");
 }
 
 - (void)viewWillAppear:(BOOL)animated {	
+	NSLog(@"ViewWillAppear start");
 	[self updateUi];
 	
 	[super viewWillAppear:animated];
+	NSLog(@"ViewWillAppear end");
 }
 
-- (void)viewDidAppear:(BOOL)animated {		
+- (void)viewDidAppear:(BOOL)animated {	
+	NSLog(@"ViewDidAppear start");
 	if ([postBtn isEnabled]) {
+		[self initRestKit];
+
 		// Request population of the User by RestKit.
 		[user release];
 		user = [[User alloc] init];
@@ -79,6 +82,9 @@
 		[loader setObjectMapping:[[[RKObjectManager sharedManager] mappingProvider] objectMappingForClass:[User class]]];
 		[loader send];
 	}
+	
+	[super viewDidAppear:animated];
+	NSLog(@"ViewDidAppear end");
 }
 
 - (IBAction)login:(id)sender {
@@ -86,16 +92,14 @@
 	NSString* consumerKey = (NSString*)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"PPConsumerKey"];
 	if ((consumerKey == nil) || ([consumerKey length] <= 0)) {
 		NSLog(@"!!!!!!!YOU MUST SET THE PPConsumerKey VALUE IN THE INFO PLIST FOR THIS APP TO RUN!!!!!!!!!");
-		
 		[[NSThread mainThread] exit];
 	}
 
-	oauthViewController = 
-		[[OAuthViewController alloc] 
+	OAuthViewController* oauthViewController = 
+		[[[OAuthViewController alloc] 
 		 	initWithLoginUrl:@"https://login.salesforce.com/services/oauth2/authorize"
 		         callbackUrl:@"https://login.salesforce.com/services/oauth2/success"
-		         consumerKey:consumerKey 
-		            delegate:self];
+		         consumerKey:consumerKey] autorelease];
 	
 	[[self navigationController] pushViewController:oauthViewController animated:YES];
 }
@@ -107,10 +111,7 @@
 }
 
 - (IBAction)postPhotoToGroup:(id)sender {
-	// Show the group picker.
-	groupPickerController = [[GroupPickerController alloc] init];
-	
-	[[self navigationController] pushViewController:groupPickerController animated:YES];
+	[[self navigationController] pushViewController:[[[PhotoPosterController alloc] init] autorelease] animated:YES];
 }
 
 - (void)initRestKit {
@@ -127,16 +128,6 @@
     RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
     RKLogConfigureByName("RestKit/Network/Queue", RKLogLevelDebug);
-}
-
--(void)authCompleted {	
-	// Initialize RestKit.
-	[self initRestKit];
-		
-	// Enable the post button.
-	[postBtn setEnabled:TRUE];
-		
-	[stateLbl setText:@"Logged in"];
 }
 
 // RKObjectLoaderDelegate implementation.
