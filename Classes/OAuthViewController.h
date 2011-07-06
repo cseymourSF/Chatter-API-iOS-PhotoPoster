@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-@interface OAuthViewController : UIViewController<UINavigationControllerDelegate, UIWebViewDelegate> {
+@interface OAuthViewController : UIViewController<UIWebViewDelegate> {
 	UIWebView* webView;
 	NSURLRequest* loginRequest;
 	NSURL* callbackUrl;

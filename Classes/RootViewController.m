@@ -68,8 +68,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {	
-	NSLog(@"ViewDidAppear start");
-	if ([postBtn isEnabled]) {
+	if ([[AuthContext context] accessToken] != nil) {
 		[self initRestKit];
 
 		// Request population of the User by RestKit.
@@ -84,7 +83,6 @@
 	}
 	
 	[super viewDidAppear:animated];
-	NSLog(@"ViewDidAppear end");
 }
 
 - (IBAction)login:(id)sender {

@@ -19,7 +19,8 @@
 
 +(void)setupMapping:(RKObjectManager*)manager {
 	RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[User class]];
-	[userMapping mapAttributes:@"name", @"title", @"userId", @"firstName", @"lastName", nil ];
+	[userMapping mapAttributes:@"name", @"title", @"firstName", @"lastName", nil ];
+	[userMapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"id" toKeyPath:@"userId"]];
 	[userMapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"photo.largePhotoUrl" toKeyPath:@"largePhotoUrl"]];
 
 	[manager.router routeClass:[User class] toResourcePath:@"/services/data/v22.0/chatter/users/(userId)" forMethod:RKRequestMethodGET];
