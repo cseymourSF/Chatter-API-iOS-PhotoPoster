@@ -1,15 +1,17 @@
 //
-//  PostResultController.m
+//  PhotoPosterController.m
 //  PhotoPoster
 //
 //  Created by Chris Seymour on 7/5/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PostResultController.h"
+#import "PhotoPosterController.h"
+#import "GroupPickerController.h"
+#import "ImagePickerViewController.h"
 #import "AuthContext.h"
 
-@implementation PostResultController
+@implementation PhotoPosterController
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -18,31 +20,80 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 @synthesize image;
+@synthesize group;
 @synthesize imageView;
 @synthesize groupLbl;
-@synthesize resultLbl;
-@synthesize group;
 @synthesize descField;
-@synthesize textField;
+@synthesize messageField;
+@synthesize postBtn;
 
-- (id)initWithGroup:(Group*)groupIn image:(UIImage*)imageIn {
-	self = [super initWithNibName:@"PostResultController" bundle:nil];
+- (id)init {
+	self = [super initWithNibName:@"PhotoPosterController" bundle:nil];
 	if (self != nil) {
-		self.image = imageIn;
-		self.group = groupIn;
 		keyboardOffset = 0;
 	}
 	return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)dealloc {
+	[image release];
+	[group release];
+	[imageView release];
+	[groupLbl release];
+	[descField release];
+	[messageField release];
+	[postBtn release];
+	
+	[conn release];
+	[responseData release];
+
+    [super dealloc];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
 	[self.imageView setImage:self.image];
 	[self.groupLbl setText:[self.group name]];
-	[self.resultLbl setText:@""];
+	
+	if (self.image != nil && self.group != nil) {
+		[postBtn setEnabled:YES];
+		[postBtn setAlpha:1.0];
+	} else {
+		[postBtn setEnabled:NO];
+		[postBtn setAlpha:0.5];
+	}
+	
+	[super viewWillAppear:animated];
+}
+
+- (void)recenter {
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += keyboardOffset;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
 	
 	keyboardOffset = 0;
 	
-	[super viewWillAppear:animated];
+	// Clear the keyboard.
+	[self.descField resignFirstResponder];
+	[self.messageField resignFirstResponder];
+}
+
+- (IBAction)chooseGroup:(id)sender {
+	[self recenter];
+	
+	[self.navigationController pushViewController:[[[GroupPickerController alloc] initWithParent:self] autorelease] animated:YES];
+}
+
+- (IBAction)choosePhoto:(id)sender {
+	[self recenter];
+	
+	[self.navigationController pushViewController:[[[ImagePickerViewController alloc] initWithParent:self] autorelease] animated:YES];
 }
 
 + (NSString*)addTextParam:(NSString*)param value:(NSString*)value body:(NSString*)body boundary:(NSString*)boundary {
@@ -59,8 +110,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	
 	// Make the request.
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:targetUrl]
-										   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData // Don't use the cache.
-									   timeoutInterval:60];
+														   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData // Don't use the cache.
+													   timeoutInterval:60];
 	
 	[[AuthContext context] addOAuthHeaderToNSRequest:request];
 	[request setHTTPMethod:@"POST"];
@@ -68,14 +119,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	NSString* boundary = @"-----------------2342342352342343";
 	
 	[request addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
-			 forHTTPHeaderField:@"Content-Type"];
+             forHTTPHeaderField:@"Content-Type"];
 	
 	// Write the body.
 	NSString* boundaryBreak = [NSString stringWithFormat:@"\r\n--%@\r\n", boundary];
 	NSString* body = boundaryBreak;
 	
-	body = [PostResultController addTextParam:@"text" value:[textField text] body:body boundary:boundaryBreak];
-	body = [PostResultController addTextParam:@"desc" value:[descField text] body:body boundary:boundaryBreak];
+	body = [PhotoPosterController addTextParam:@"text" value:[messageField text] body:body boundary:boundaryBreak];
+	body = [PhotoPosterController addTextParam:@"desc" value:[descField text] body:body boundary:boundaryBreak];
 	
 	NSDateFormatter* dateFormat = [[[NSDateFormatter alloc] init] autorelease];
 	[dateFormat setDateFormat:@"M/d/y h:m:s"];
@@ -83,17 +134,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	
 	NSString* filenameStr = [NSString stringWithFormat:@"blah %@.jpg", date];
 	
-	body = [PostResultController addTextParam:@"fileName" value:filenameStr body:body boundary:boundaryBreak];
-
+	body = [PhotoPosterController addTextParam:@"fileName" value:filenameStr body:body boundary:boundaryBreak];
+	
 	body = [NSString stringWithFormat:@"%@Content-Disposition: form-data; name=\"feedItemFileUpload\"; filename=\"%@\"\r\n", body, filenameStr];
 	body = [NSString stringWithFormat:@"%@Content-Type: application/octet-stream\r\n\r\n", body];
-
+	
 	NSMutableData* bodyData = [NSMutableData data];
 	[bodyData appendData:[body dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	NSData* imageData = UIImageJPEGRepresentation(self.image, 90);
 	[bodyData appendData:imageData];
-
+	
 	NSData* boundaryDataEnd = [[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
 	[bodyData appendData:boundaryDataEnd];
 	
@@ -103,27 +154,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	conn = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
 }
 
-- (IBAction)done:(id)sender {
-	[self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (void)dealloc {
-	[conn release];
-	[responseData release];
-	[image release];
-	[group release];
-	[imageView release];
-	[groupLbl release];
-	[resultLbl release];
-	[textField release];
-	[descField release];
-	
-    [super dealloc];
-}
-
-// ================
-// NSURLConnection delegate methods
-
 - (void)clearConnectionState {
 	// Reset state.
 	[conn release];
@@ -131,6 +161,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	conn = nil;
 	responseData = nil;
 }
+
+// ================
+// NSURLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"Failed to finish photo post: %@", error);
@@ -152,11 +185,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	NSString* responseStr = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
 	NSLog(@"Response: %@", responseStr);
 	
+	// Show a modal popup with the result.
+	NSString* result;
 	if ([responseStr rangeOfString:@"error"].location == NSNotFound) {
-		resultLbl.text = @"Successful";
+		result = @"Successful";
 	} else {
-		resultLbl.text = @"Failure";
-	}
+		result = @"Failure";
+	}	
+
+	UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Post Result" message:result delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+	[alert show];
 	
 	// TODO: Use RestKit to translate response into a feed item representation...
 	
@@ -208,25 +246,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 	[self recenter];
-}
-
-- (void)recenter {
-    CGRect viewFrame = self.view.frame;
-    viewFrame.origin.y += keyboardOffset;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
-    
-    [self.view setFrame:viewFrame];
-    
-    [UIView commitAnimations];
-	
-	keyboardOffset = 0;
-	
-	// Clear the keyboard.
-	[self.textField resignFirstResponder];
-	[self.descField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textFieldIn {
