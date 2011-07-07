@@ -7,7 +7,6 @@
 //
 
 #import "include/RestKit/RestKit.h"
-#import "Group.h"
 
 @interface GroupsPage : NSObject {
 	NSString* currentPageUrl;

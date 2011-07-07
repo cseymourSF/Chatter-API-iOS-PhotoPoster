@@ -34,6 +34,7 @@
 	[super viewDidLoad];
 		
 	// Request population of first followed groups page.
+	[followedGroups release];
 	followedGroups = [[GroupsPage alloc] init];
 	groupsFetcher = [[ObjectFetcher alloc] initWithTag:@"groups" object:followedGroups delegate:self];
 	[groupsFetcher fetch];
@@ -71,6 +72,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Push in a new GroupViewController using the selected group.
 	Group* selectedGroup = [[followedGroups groups] objectAtIndex:indexPath.row];
+	NSLog(@"Selected group: %@", selectedGroup.name);
+	
 	GroupViewController* groupViewController = [[[GroupViewController alloc] initWithGroup:selectedGroup] autorelease];
 	[self.navigationController pushViewController:groupViewController animated:YES];
 }

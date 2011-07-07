@@ -41,7 +41,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[messageField release];
 	[postBtn release];
 	
-	[conn release];
 	[responseData release];
 
     [super dealloc];
@@ -49,6 +48,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[self.imageView setImage:self.image];
+	
+	statusCode = -1;
 	
 	if (self.image != nil) {
 		[postBtn setEnabled:YES];
@@ -95,7 +96,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[self recenter];
 	
 	// Post the photo to the group, using a regular HTTP POST because
-	// RestKit doesn't support multipart posts yet.
+	// RestKit doesn't support multipart binary posts yet.
 	NSString* targetUrl = [NSString stringWithFormat:@"%@/services/data/v22.0/chatter/feeds/record/%@/feed-items", [[AuthContext context] instanceUrl], group.groupId];
 	
 	// Make the request.
@@ -111,7 +112,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[request addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
              forHTTPHeaderField:@"Content-Type"];
 	
-	// Write the body.
+	// Assemble the body.
 	NSString* boundaryBreak = [NSString stringWithFormat:@"\r\n--%@\r\n", boundary];
 	NSString* body = boundaryBreak;
 	
@@ -141,30 +142,25 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	[request setHTTPBody:bodyData];
 	
 	// Send the request asynchronously.
-	conn = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
-}
-
-- (void)clearConnectionState {
-	// Reset state.
-	[conn release];
-	[responseData release];
-	conn = nil;
-	responseData = nil;
+	[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 // ================
 // NSURLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	NSLog(@"Failed to finish photo post: %@", error);
-	
-	[self clearConnectionState];
+	NSLog(@"Failed to finish photo post request: %@", error);
+	[responseData release];
+	responseData = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	[responseData release];
 	responseData = [[NSMutableData dataWithCapacity:1024] retain];
 	[responseData setLength:0];
+	
+	statusCode = [(NSHTTPURLResponse*)response statusCode];
+	NSLog(@"status code: %d", statusCode);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)inData {
@@ -177,21 +173,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	
 	// Show a modal popup with the result.
 	NSString* result;
-	if ([responseStr rangeOfString:@"error"].location == NSNotFound) {
-		result = @"Successful";
+	if (statusCode == 201) {
+		result = @"Success";
 	} else {
-		result = @"Failure";
+		result = @"Failed";
 	}	
 
 	UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Post Result" message:result delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
 	[alert show];
 	
-	// TODO: Use RestKit to translate response into a feed item representation...
-	
-	[self clearConnectionState];
+	[responseData release];
+	responseData = nil;
 	
 	// Pop out.
-	// TODO: Do this on Alert completion?
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -199,6 +193,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 // Text field delegate methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldIn {
+	// This code is used to move the view when the text field is being edited
+	// and the keyboard slides up.
+	//
 	// From http://cocoawithlove.com/2008/10/sliding-uitextfields-around-to-avoid.html
 	
     CGRect textFieldRect = [self.view.window convertRect:textFieldIn.bounds fromView:textFieldIn];

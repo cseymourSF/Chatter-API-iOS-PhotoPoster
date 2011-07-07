@@ -7,7 +7,7 @@
 //
 
 #import "GroupsPage.h"
-
+#import "Group.h"
 
 @implementation GroupsPage
 

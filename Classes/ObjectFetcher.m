@@ -40,8 +40,6 @@
 
 	[loader setObjectMapping:[[[RKObjectManager sharedManager] mappingProvider] objectMappingForClass:[self.obj class]]];
 	[loader send];
-	
-	[[RKObjectManager sharedManager] getObject:self.obj delegate:self];
 }
 
 // RKObjectLoaderDelegate implementation

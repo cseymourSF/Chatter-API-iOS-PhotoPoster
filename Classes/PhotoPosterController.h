@@ -18,8 +18,9 @@
 	UIButton* postBtn;
 	
 	CGFloat keyboardOffset;
-	NSURLConnection* conn;
+	
 	NSMutableData* responseData;
+	int statusCode;
 }
 
 - (id)initWithGroup:(Group*)groupIn;

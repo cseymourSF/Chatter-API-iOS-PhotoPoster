@@ -30,7 +30,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self.useBtn setEnabled:([self.imageView image] != nil)];
+	if ([self.imageView image] == nil) {
+		[self.useBtn setEnabled:NO];
+		[self.useBtn setAlpha:0.5];
+	} else {
+		[self.useBtn setEnabled:YES];
+		[self.useBtn setAlpha:1.0];
+	}
+	
 	[super viewWillAppear:animated];
 }
 

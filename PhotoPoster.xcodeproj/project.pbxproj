@@ -285,8 +285,8 @@
 			children = (
 				A3CF799E13C272FE00AB49D3 /* User.h */,
 				A3CF799F13C272FE00AB49D3 /* User.m */,
-				A3CF7BBE13C2DC6E00AB49D3 /* ObjectFetcher.h */,
 				A3CF7BBF13C2DC6E00AB49D3 /* ObjectFetcher.m */,
+				A3CF7BBE13C2DC6E00AB49D3 /* ObjectFetcher.h */,
 				A3CF7BC313C2DDCF00AB49D3 /* GroupsPage.h */,
 				A3CF7BC413C2DDCF00AB49D3 /* GroupsPage.m */,
 				A3CF7BC613C2DE0400AB49D3 /* Group.h */,
