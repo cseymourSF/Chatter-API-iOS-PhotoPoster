@@ -10,11 +10,6 @@
 
 @implementation AuthContext
 
-static NSString *const kKeychainItemName = @"PhotoPoster app";
-static NSString *const kAccessTokenKey = @"accessToken";
-static NSString *const kRefreshTokenKey = @"refreshToken";
-static NSString *const kInstanceUrlKey = @"instanceUrl";
-
 static AuthContext* contextSingleton;
 
 @synthesize accessToken;
@@ -28,7 +23,6 @@ static AuthContext* contextSingleton;
     {
         initialized = YES;
         contextSingleton = [[AuthContext alloc] init];
-		[contextSingleton load];
     }
 }
 
@@ -40,28 +34,6 @@ static AuthContext* contextSingleton;
 	self.accessToken = nil;
 	self.refreshToken = nil;
 	self.instanceUrl = nil;
-	
-	[self save];
-}
-
-- (void)save {
-	// Save config.
-	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:refreshToken
-				 forKey:kRefreshTokenKey];
-	[defaults setObject:accessToken 
-				 forKey:kAccessTokenKey];
-	[defaults setObject:instanceUrl
-				 forKey:kInstanceUrlKey];
-	[defaults synchronize];
-}
-
-- (void)load {
-	// Load config.
-	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-	self.accessToken = [defaults stringForKey:kAccessTokenKey];
-	self.refreshToken = [defaults stringForKey:kRefreshTokenKey];
-	self.instanceUrl = [defaults stringForKey:kInstanceUrlKey];
 }
 
 - (NSString*)getOAuthHeaderValue {

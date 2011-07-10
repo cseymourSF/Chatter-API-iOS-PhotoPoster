@@ -20,8 +20,6 @@
 - (NSString*)getOAuthHeaderValue;
 - (void)addOAuthHeader:(RKRequest*)request;
 - (void)addOAuthHeaderToNSRequest:(NSMutableURLRequest*)request;
-- (void)save;
-- (void)load;
 - (void)clear;
 
 @property(nonatomic, retain) NSString* accessToken;
