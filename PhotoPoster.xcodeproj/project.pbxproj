@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		A327451D13CBAC5C006BCEBD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A327451C13CBAC5C006BCEBD /* Security.framework */; };
+		A327460113CBC28D006BCEBD /* Identity.m in Sources */ = {isa = PBXBuildFile; fileRef = A327460013CBC28D006BCEBD /* Identity.m */; };
 		A37973CB13A14438006976E7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37973C913A14438006976E7 /* RootViewController.m */; };
 		A37973CC13A14438006976E7 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37973CA13A14438006976E7 /* RootViewController.xib */; };
 		A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */; };
@@ -133,6 +135,9 @@
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PhotoPoster-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoPoster-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A327451C13CBAC5C006BCEBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A32745FF13CBC28D006BCEBD /* Identity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Identity.h; sourceTree = "<group>"; };
+		A327460013CBC28D006BCEBD /* Identity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Identity.m; sourceTree = "<group>"; };
 		A37973C813A14438006976E7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A37973C913A14438006976E7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A37973CA13A14438006976E7 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = Classes/RootViewController.xib; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 				A3CF798813C2710A00AB49D3 /* CFNetwork.framework in Frameworks */,
 				A3CF798C13C2711800AB49D3 /* SystemConfiguration.framework in Frameworks */,
 				A3CF799013C2712300AB49D3 /* MobileCoreServices.framework in Frameworks */,
+				A327451D13CBAC5C006BCEBD /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +231,7 @@
 				A3CF798713C2710A00AB49D3 /* CFNetwork.framework */,
 				A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */,
 				A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */,
+				A327451C13CBAC5C006BCEBD /* Security.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -295,6 +302,8 @@
 				A3BCBE9D13C4ED93006D4483 /* FeedItemPage.m */,
 				A3BCBE9F13C4EDAB006D4483 /* FeedItem.h */,
 				A3BCBEA013C4EDAB006D4483 /* FeedItem.m */,
+				A32745FF13CBC28D006BCEBD /* Identity.h */,
+				A327460013CBC28D006BCEBD /* Identity.m */,
 			);
 			name = "Rest Objects";
 			sourceTree = "<group>";
@@ -501,6 +510,7 @@
 				A3BCBE5313C4E854006D4483 /* GroupViewController.m in Sources */,
 				A3BCBE9E13C4ED93006D4483 /* FeedItemPage.m in Sources */,
 				A3BCBEA113C4EDAB006D4483 /* FeedItem.m in Sources */,
+				A327460113CBC28D006BCEBD /* Identity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

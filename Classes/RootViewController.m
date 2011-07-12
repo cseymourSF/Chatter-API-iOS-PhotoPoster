@@ -19,6 +19,8 @@
 @implementation RootViewController
 
 @synthesize exploreBtn;
+@synthesize loginBtn;
+@synthesize logoutBtn;
 @synthesize stateLbl;
 @synthesize nameLbl;
 @synthesize titleLbl;
@@ -27,6 +29,8 @@
 
 - (void)dealloc {
 	[exploreBtn release];
+	[loginBtn release];
+	[logoutBtn release];
 	[stateLbl release];
 	[nameLbl release];
 	[titleLbl release];
@@ -66,22 +70,53 @@
 	[super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated {	
-	if ([[AuthContext context] accessToken] != nil) {
-		[self initRestKit];
+- (void)initRestKitAndUser {
+	[self initRestKit];
+	
+	// Request population of the User by RestKit.
+	[user release];
+	user = [[User alloc] init];
+	user.userId = @"me";
+	
+	RKObjectLoader* loader = [[RKObjectManager sharedManager] objectLoaderForObject:user method:RKRequestMethodGET delegate:self];
+	[[AuthContext context] addOAuthHeader:loader];	
+	[loader setObjectMapping:[[[RKObjectManager sharedManager] mappingProvider] objectMappingForClass:[User class]]];
+	[loader send];
+}
 
-		// Request population of the User by RestKit.
-		[user release];
-		user = [[User alloc] init];
-		user.userId = @"me";
+- (void)viewDidAppear:(BOOL)animated {	
+	if ([[AuthContext context] accessToken] == nil) {
+		// Retrieve the "PPConsumerKey" value from the info plist.	
+		NSString* consumerKey = (NSString*)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"PPConsumerKey"];
+		if ((consumerKey == nil) || ([consumerKey length] <= 0)) {
+			NSLog(@"!!!!!!!YOU MUST SET THE PPConsumerKey VALUE IN THE INFO PLIST FOR THIS APP TO RUN!!!!!!!!!");
+			[[NSThread mainThread] exit];
+		}
 		
-		RKObjectLoader* loader = [[RKObjectManager sharedManager] objectLoaderForObject:user method:RKRequestMethodGET delegate:self];
-		[[AuthContext context] addOAuthHeader:loader];	
-		[loader setObjectMapping:[[[RKObjectManager sharedManager] mappingProvider] objectMappingForClass:[User class]]];
-		[loader send];
+		BOOL isGetting = [[AuthContext context] startGettingAccessTokenWithConsumerKey:consumerKey 
+																		   delegate:self];
+		if (isGetting) {
+			[stateLbl setText:@"Fetching access token..."];
+			[loginBtn setEnabled:FALSE];
+			[logoutBtn setEnabled:FALSE];
+		}
+	} else {
+		[self initRestKitAndUser];
 	}
 	
 	[super viewDidAppear:animated];
+}
+
+- (void)refreshCompleted {
+	NSLog(@"Finished trying to fetch access token: %@", [[AuthContext context] accessToken]);
+	
+	[loginBtn setEnabled:TRUE];
+	[logoutBtn setEnabled:TRUE];
+	
+	[self updateUi];
+	if ([[AuthContext context] accessToken] != nil) {
+		[self initRestKitAndUser];
+	}
 }
 
 - (IBAction)login:(id)sender {
@@ -112,6 +147,8 @@
 }
 
 - (void)initRestKit {
+	// TODO: Don't re-initialize everything every time, just adjust the base URL!
+	
 	// Set-up the RestKit manager.
 	RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[[AuthContext context] instanceUrl]];
 	[RKObjectManager setSharedManager:manager];

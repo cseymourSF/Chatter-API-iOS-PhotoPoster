@@ -87,6 +87,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 		[context setAccessToken:accessToken];
 		[context setRefreshToken:refreshToken];
 		[context setInstanceUrl:instanceUrl];
+		[context save];
 		
 		// Pop back out.
 		[self.navigationController popViewControllerAnimated:YES];

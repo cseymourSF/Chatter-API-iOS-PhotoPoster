@@ -8,13 +8,15 @@
 
 #import "include/RestKit/RestKit.h"
 
+#import "AuthContext.h"
 #import "OAuthViewController.h"
-#import "GroupPickerController.h"
 #import "User.h"
 #import "PhotoFetcher.h"
 
-@interface RootViewController : UIViewController<RKObjectLoaderDelegate, PhotoFetcherDelegate> {
+@interface RootViewController : UIViewController<RKObjectLoaderDelegate, PhotoFetcherDelegate, AccessTokenRefreshDelegate> {
 	UIButton* exploreBtn;
+	UIButton* loginBtn;
+	UIButton* logoutBtn;
 	UILabel* stateLbl;
 	UILabel* nameLbl;
 	UILabel* titleLbl;
@@ -26,6 +28,8 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIButton* exploreBtn;
+@property (nonatomic, retain) IBOutlet UIButton* loginBtn;
+@property (nonatomic, retain) IBOutlet UIButton* logoutBtn;
 @property (nonatomic, retain) IBOutlet UILabel* stateLbl;
 @property (nonatomic, retain) IBOutlet UILabel* nameLbl;
 @property (nonatomic, retain) IBOutlet UILabel* titleLbl;
