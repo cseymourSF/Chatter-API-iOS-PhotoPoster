@@ -13,7 +13,7 @@
 
 static AuthContext* contextSingleton;
 
-static const NSString* keychainIdentifier = @"com.salesforce.AuthKeychain";
+static const NSString* keychainIdentifier = @"com.salesforce.PhotoPoster.AuthKeychain";
 
 @synthesize accessToken;
 @synthesize refreshToken;
@@ -42,7 +42,7 @@ static const NSString* keychainIdentifier = @"com.salesforce.AuthKeychain";
 	self = [super init];
 	if (self != nil) {
 		// TODO: Get base URL from config.
-		restManager = [RKObjectManager objectManagerWithBaseURL:@"https://login.salesforce.com/"];
+		restManager = [[RKObjectManager objectManagerWithBaseURL:@"https://login.salesforce.com/"] retain];
 		
 		// Load the refresh token and instance URL from the keychain, and 
 		// retrieve a new access token.
