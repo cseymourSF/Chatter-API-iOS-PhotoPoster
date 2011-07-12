@@ -228,10 +228,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				A3CF798713C2710A00AB49D3 /* CFNetwork.framework */,
-				A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */,
-				A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */,
-				A327451C13CBAC5C006BCEBD /* Security.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -263,6 +259,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3CF798713C2710A00AB49D3 /* CFNetwork.framework */,
+				A3CF798B13C2711800AB49D3 /* SystemConfiguration.framework */,
+				A3CF798F13C2712300AB49D3 /* MobileCoreServices.framework */,
+				A327451C13CBAC5C006BCEBD /* Security.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
