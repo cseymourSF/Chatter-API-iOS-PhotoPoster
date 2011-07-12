@@ -18,6 +18,7 @@
 		A37973CB13A14438006976E7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37973C913A14438006976E7 /* RootViewController.m */; };
 		A37973CC13A14438006976E7 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37973CA13A14438006976E7 /* RootViewController.xib */; };
 		A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */; };
+		A3A8099F13CCFCE800185C41 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A8099E13CCFCE800185C41 /* Config.m */; };
 		A3BCBD6913C403CE006D4483 /* PhotoPosterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */; };
 		A3BCBD6A13C403CE006D4483 /* PhotoPosterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */; };
 		A3BCBE5313C4E854006D4483 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBE5113C4E854006D4483 /* GroupViewController.m */; };
@@ -131,9 +132,9 @@
 		1D6058910D05DD3D006BFB54 /* PhotoPoster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPoster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPoster_Prefix.pch; sourceTree = "<group>"; };
+		28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoPoster_Prefix.pch; path = ../PhotoPoster_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PhotoPoster-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoPoster-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A327451C13CBAC5C006BCEBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A32745FF13CBC28D006BCEBD /* Identity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Identity.h; sourceTree = "<group>"; };
@@ -143,6 +144,8 @@
 		A37973CA13A14438006976E7 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = Classes/RootViewController.xib; sourceTree = "<group>"; };
 		A38B9B4313C3AA2A005BDDB2 /* PhotoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFetcher.h; sourceTree = "<group>"; };
 		A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFetcher.m; sourceTree = "<group>"; };
+		A3A8099D13CCFCE800185C41 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		A3A8099E13CCFCE800185C41 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		A3BCBD6613C403CE006D4483 /* PhotoPosterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPosterController.h; sourceTree = "<group>"; };
 		A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPosterController.m; sourceTree = "<group>"; };
 		A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoPosterController.xib; path = Classes/PhotoPosterController.xib; sourceTree = "<group>"; };
@@ -224,21 +227,11 @@
 			children = (
 				A3CF795113C270C300AB49D3 /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -334,6 +327,8 @@
 				A3CF79B813C277DA00AB49D3 /* AuthContext.m */,
 				A38B9B4313C3AA2A005BDDB2 /* PhotoFetcher.h */,
 				A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */,
+				A3A8099D13CCFCE800185C41 /* Config.h */,
+				A3A8099E13CCFCE800185C41 /* Config.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -341,6 +336,8 @@
 		A3CF7C7D13C2EAC000AB49D3 /* Top Level */ = {
 			isa = PBXGroup;
 			children = (
+				28A0AAE50D9B0CCF005BE974 /* PhotoPoster_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 				1D3623240D0F684500981E51 /* PhotoPosterAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PhotoPosterAppDelegate.m */,
 			);
@@ -511,6 +508,7 @@
 				A3BCBE9E13C4ED93006D4483 /* FeedItemPage.m in Sources */,
 				A3BCBEA113C4EDAB006D4483 /* FeedItem.m in Sources */,
 				A327460113CBC28D006BCEBD /* Identity.m in Sources */,
+				A3A8099F13CCFCE800185C41 /* Config.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +536,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoPoster_Prefix.pch;
-				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build\"";
 				INFOPLIST_FILE = "PhotoPoster-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +561,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoPoster_Prefix.pch;
-				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
+				HEADER_SEARCH_PATHS = "\"$(SOURCE_ROOT)/Classes/RestKit/Build\"";
 				INFOPLIST_FILE = "PhotoPoster-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

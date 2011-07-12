@@ -6,8 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "include/RestKit/RestKit.h"
-
 #import "AuthContext.h"
 #import "OAuthViewController.h"
 #import "User.h"

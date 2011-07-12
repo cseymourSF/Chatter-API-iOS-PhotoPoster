@@ -6,8 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "include/RestKit/RestKit.h"
-
 @interface User : NSObject {
 	NSString* userId;
 	NSString* firstName;

@@ -6,7 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "include/RestKit/RestKit.h"
 #import "Identity.h"
 
 @protocol AccessTokenRefreshDelegate<NSObject>
@@ -25,11 +24,13 @@
 }
 
 + (AuthContext*)context;
++ (NSURL*)fullLoginUrl;
 
 - (NSString*)getOAuthHeaderValue;
 - (void)addOAuthHeader:(RKRequest*)request;
 - (void)addOAuthHeaderToNSRequest:(NSMutableURLRequest*)request;
-- (BOOL)startGettingAccessTokenWithConsumerKey:(NSString*)consumerKey delegate:(id<AccessTokenRefreshDelegate>)delegateIn;
+- (BOOL)startGettingAccessTokenWithDelegate:(id<AccessTokenRefreshDelegate>)delegateIn;
+- (void)processCallbackUrl:(NSURL*)callbackUrl;
 - (void)clear;
 - (void)save;
 - (void)load;

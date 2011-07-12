@@ -6,8 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "include/RestKit/RestKit.h"
-
 #import "AuthContext.h"
 #import "RootViewController.h"
 #import "GroupPickerController.h"
@@ -86,15 +84,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {	
 	if ([[AuthContext context] accessToken] == nil) {
-		// Retrieve the "PPConsumerKey" value from the info plist.	
-		NSString* consumerKey = (NSString*)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"PPConsumerKey"];
-		if ((consumerKey == nil) || ([consumerKey length] <= 0)) {
-			NSLog(@"!!!!!!!YOU MUST SET THE PPConsumerKey VALUE IN THE INFO PLIST FOR THIS APP TO RUN!!!!!!!!!");
-			[[NSThread mainThread] exit];
-		}
-		
-		BOOL isGetting = [[AuthContext context] startGettingAccessTokenWithConsumerKey:consumerKey 
-																		   delegate:self];
+		BOOL isGetting = [[AuthContext context] startGettingAccessTokenWithDelegate:self];
 		if (isGetting) {
 			[stateLbl setText:@"Fetching access token..."];
 			[loginBtn setEnabled:FALSE];
@@ -119,21 +109,17 @@
 	}
 }
 
-- (IBAction)login:(id)sender {
-	// Retrieve the "PPConsumerKey" value from the info plist.	
-	NSString* consumerKey = (NSString*)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"PPConsumerKey"];
-	if ((consumerKey == nil) || ([consumerKey length] <= 0)) {
-		NSLog(@"!!!!!!!YOU MUST SET THE PPConsumerKey VALUE IN THE INFO PLIST FOR THIS APP TO RUN!!!!!!!!!");
-		[[NSThread mainThread] exit];
-	}
-
-	OAuthViewController* oauthViewController = 
-		[[[OAuthViewController alloc] 
-		 	initWithLoginUrl:@"https://login.salesforce.com/services/oauth2/authorize"
-		         callbackUrl:@"https://login.salesforce.com/services/oauth2/success"
-		         consumerKey:consumerKey] autorelease];
+- (IBAction)login:(id)sender {	
+	NSURL* loginUrl = [AuthContext fullLoginUrl];
 	
-	[[self navigationController] pushViewController:oauthViewController animated:YES];
+	if ([[[loginUrl absoluteString] uppercaseString] hasPrefix:@"HTTP"]) {
+		// If it starts with http or https, use an embedded UIWebView.
+		OAuthViewController* oauthViewController = [[[OAuthViewController alloc] initWithLoginUrl:loginUrl] autorelease];
+		[[self navigationController] pushViewController:oauthViewController animated:YES];
+	} else {
+		// If it starts with a custom prefix, spawn Mobile Safari.
+		[[UIApplication sharedApplication] openURL:loginUrl];
+	}
 }
 
 - (IBAction)logout:(id)sender {

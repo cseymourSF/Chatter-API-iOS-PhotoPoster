@@ -6,7 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "include/RestKit/RestKit.h"
 
 @interface Group : NSObject {
 	NSString* groupId;
