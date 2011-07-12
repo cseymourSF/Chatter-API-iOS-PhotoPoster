@@ -1,5 +1,7 @@
 You MUST set the "PPConsumerKey" value in the info plist to the correct Consumer Key for your application! This value comes from the Remote Access App setup on Salesforce.
 
+There is another sample app at https://github.com/cseymourSF/Chatter-API-iOS-Sample showing how to explore feeds in more depth.
+
 The code in Classes/RestKit is the RestKit submodule: https://github.com/twotoasters/RestKit
 
 To learn how to use submodules please refer to: http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updating/
