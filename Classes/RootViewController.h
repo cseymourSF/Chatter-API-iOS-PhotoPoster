@@ -34,9 +34,9 @@
 @property (nonatomic, retain) IBOutlet UIImageView* picView;
 @property (nonatomic, retain) IBOutlet UIView* infoView;
 
-- (void)initRestKit;
 - (IBAction)login:(id)sender;
 - (IBAction)logout:(id)sender;
 - (IBAction)exploreGroups:(id)sender;
+- (void)processCallbackUrl:(NSURL*)callbackUrl;
 
 @end

@@ -8,7 +8,7 @@
 
 
 @protocol PhotoFetcherDelegate<NSObject>
-- (void)retrievalCompleted:(NSString*)tag image:(UIImage*)image;
+- (void)photoRetrievalCompleted:(NSString*)tag image:(UIImage*)image;
 @end
 
 @interface PhotoFetcher : NSObject {

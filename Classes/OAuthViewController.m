@@ -15,12 +15,7 @@
 
 @synthesize webView;
 
-- (id)initWithLoginUrl:(NSURL*)loginUrl {
-	// Make the login request.
-	loginRequest = [[NSMutableURLRequest requestWithURL:loginUrl
-										   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData // Don't use the cache.
-									   timeoutInterval:60] retain];
-	
+- (id)init {	
 	// Load up UI.
 	self = [self initWithNibName:@"OAuthViewController" bundle:nil];
 	if (self != nil) {
@@ -37,7 +32,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	// Load request in web view.
+	// Load login request in web view.
+	NSURLRequest* loginRequest = [NSMutableURLRequest requestWithURL:[AuthContext fullLoginUrl]
+											cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+										timeoutInterval:60];
 	[self.webView loadRequest:loginRequest];
 	
 	[super viewWillAppear:animated];
@@ -66,7 +64,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 - (void)dealloc {
 	[self.webView release];
-	[loginRequest release];
 	
     [super dealloc];
 }

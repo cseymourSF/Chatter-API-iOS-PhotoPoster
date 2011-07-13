@@ -66,7 +66,7 @@
 }
 
 // PhotoFetcherDelegate implementation.
-- (void)retrievalCompleted:(NSString*)tag image:(UIImage*)image {
+- (void)photoRetrievalCompleted:(NSString*)tag image:(UIImage*)image {
 	[imageView setImage:image];
 }
 

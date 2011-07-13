@@ -53,7 +53,7 @@
 	NSLog(@"Failed to finish user photo retrieval: %@", error);
 	
 	// Report to the delegate.
-	[self.delegate retrievalCompleted:self.tag image:nil];
+	[self.delegate photoRetrievalCompleted:self.tag image:nil];
 	
 	// Reset state.
 	self.data = nil;
@@ -73,7 +73,7 @@
 	UIImage* image = [UIImage imageWithData:self.data];
 	
 	// Report to the delegate.
-	[self.delegate retrievalCompleted:self.tag image:image];
+	[self.delegate photoRetrievalCompleted:self.tag image:image];
 	
 	// Reset state.
 	self.data = nil;

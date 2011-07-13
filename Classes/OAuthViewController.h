@@ -8,11 +8,8 @@
 
 @interface OAuthViewController : UIViewController<UIWebViewDelegate> {
 	UIWebView* webView;
-	NSURLRequest* loginRequest;
 }
 
 @property(nonatomic, retain) IBOutlet UIWebView* webView;
-
--(id)initWithLoginUrl:(NSURL*)loginUrl;
 
 @end

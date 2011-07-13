@@ -8,7 +8,6 @@
 
 #import "Config.h"
 
-
 @implementation Config
 
 +(NSString*)getConfigString:(NSString*)name {
@@ -39,6 +38,5 @@
 +(NSString*)tokenUrlPath {
 	return [Config getConfigString:@"PPTokenUrlPath"];
 }
-
 
 @end

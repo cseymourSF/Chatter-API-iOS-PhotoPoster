@@ -19,6 +19,7 @@
 		A37973CC13A14438006976E7 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A37973CA13A14438006976E7 /* RootViewController.xib */; };
 		A38B9B4513C3AA2A005BDDB2 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */; };
 		A3A8099F13CCFCE800185C41 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A8099E13CCFCE800185C41 /* Config.m */; };
+		A3A80A8013CD22FD00185C41 /* MappingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A80A7F13CD22FD00185C41 /* MappingManager.m */; };
 		A3BCBD6913C403CE006D4483 /* PhotoPosterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */; };
 		A3BCBD6A13C403CE006D4483 /* PhotoPosterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */; };
 		A3BCBE5313C4E854006D4483 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BCBE5113C4E854006D4483 /* GroupViewController.m */; };
@@ -146,6 +147,8 @@
 		A38B9B4413C3AA2A005BDDB2 /* PhotoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFetcher.m; sourceTree = "<group>"; };
 		A3A8099D13CCFCE800185C41 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		A3A8099E13CCFCE800185C41 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		A3A80A7E13CD22FD00185C41 /* MappingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappingManager.h; sourceTree = "<group>"; };
+		A3A80A7F13CD22FD00185C41 /* MappingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingManager.m; sourceTree = "<group>"; };
 		A3BCBD6613C403CE006D4483 /* PhotoPosterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPosterController.h; sourceTree = "<group>"; };
 		A3BCBD6713C403CE006D4483 /* PhotoPosterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPosterController.m; sourceTree = "<group>"; };
 		A3BCBD6813C403CE006D4483 /* PhotoPosterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoPosterController.xib; path = Classes/PhotoPosterController.xib; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				A3BCBEA013C4EDAB006D4483 /* FeedItem.m */,
 				A32745FF13CBC28D006BCEBD /* Identity.h */,
 				A327460013CBC28D006BCEBD /* Identity.m */,
+				A3A80A7E13CD22FD00185C41 /* MappingManager.h */,
+				A3A80A7F13CD22FD00185C41 /* MappingManager.m */,
 			);
 			name = "Rest Objects";
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				A3BCBEA113C4EDAB006D4483 /* FeedItem.m in Sources */,
 				A327460113CBC28D006BCEBD /* Identity.m in Sources */,
 				A3A8099F13CCFCE800185C41 /* Config.m in Sources */,
+				A3A80A8013CD22FD00185C41 /* MappingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

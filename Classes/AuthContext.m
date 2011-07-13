@@ -66,7 +66,7 @@ static const NSString* keychainIdentifier = @"com.salesforce.PhotoPoster.AuthKey
 		return FALSE;
 	}
 	
-	// Build up the URL to POST to. Give an absolute URL since the manager has a nil base URL.
+	// Build up the URL to POST to.
 	NSString* encodedRefreshToken = [self.refreshToken stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSString* targetUrl = 
 		[NSString stringWithFormat: @"%@?grant_type=refresh_token&client_id=%@&refresh_token=%@",
@@ -76,7 +76,7 @@ static const NSString* keychainIdentifier = @"com.salesforce.PhotoPoster.AuthKey
 	// Save the delegate for later (do not retain).
 	delegate = delegateIn;
 	
-	// Send off the request.
+	// Reset the identity.
 	[identity release];
 	identity = [[Identity alloc] init];
 	

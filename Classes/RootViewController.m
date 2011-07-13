@@ -6,13 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "Config.h"
 #import "AuthContext.h"
 #import "RootViewController.h"
 #import "GroupPickerController.h"
-
-#import "User.h"
-#import "GroupsPage.h"
-#import "FeedItemPage.h"
+#import "MappingManager.h"
 
 @implementation RootViewController
 
@@ -69,7 +67,8 @@
 }
 
 - (void)initRestKitAndUser {
-	[self initRestKit];
+	// Re-initialize RestKit with the current instance URL.
+	[MappingManager initialize];
 	
 	// Request population of the User by RestKit.
 	[user release];
@@ -97,6 +96,15 @@
 	[super viewDidAppear:animated];
 }
 
+- (void)processCallbackUrl:(NSURL*)callbackUrl {
+	[[AuthContext context] processCallbackUrl:callbackUrl];
+	
+	[self updateUi];
+	if ([[AuthContext context] accessToken] != nil) {
+		[self initRestKitAndUser];
+	}
+}
+
 - (void)refreshCompleted {
 	NSLog(@"Finished trying to fetch access token: %@", [[AuthContext context] accessToken]);
 	
@@ -110,15 +118,14 @@
 }
 
 - (IBAction)login:(id)sender {	
-	NSURL* loginUrl = [AuthContext fullLoginUrl];
-	
-	if ([[[loginUrl absoluteString] uppercaseString] hasPrefix:@"HTTP"]) {
+	// Decide on login approach based on the callback url protocol.
+	if ([[[Config callbackUrl] uppercaseString] hasPrefix:@"HTTP"]) {
 		// If it starts with http or https, use an embedded UIWebView.
-		OAuthViewController* oauthViewController = [[[OAuthViewController alloc] initWithLoginUrl:loginUrl] autorelease];
+		OAuthViewController* oauthViewController = [[[OAuthViewController alloc] init] autorelease];
 		[[self navigationController] pushViewController:oauthViewController animated:YES];
 	} else {
 		// If it starts with a custom prefix, spawn Mobile Safari.
-		[[UIApplication sharedApplication] openURL:loginUrl];
+		[[UIApplication sharedApplication] openURL:[AuthContext fullLoginUrl]];
 	}
 }
 
@@ -130,25 +137,6 @@
 
 - (IBAction)exploreGroups:(id)sender {
 	[[self navigationController] pushViewController:[[[GroupPickerController alloc] init] autorelease] animated:YES];
-}
-
-- (void)initRestKit {
-	// TODO: Don't re-initialize everything every time, just adjust the base URL!
-	
-	// Set-up the RestKit manager.
-	RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[[AuthContext context] instanceUrl]];
-	[RKObjectManager setSharedManager:manager];
-	
-	// Initialize mappings.
-	[User setupMapping:manager];
-	[GroupsPage setupMapping:manager];
-	[FeedItemPage setupMapping:manager];
-	
-	// RestKit logging.
-	RKLogConfigureByName("RestKit", RKLogLevelDebug);
-    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
-    RKLogConfigureByName("RestKit/Network/Queue", RKLogLevelDebug);
 }
 
 // RKObjectLoaderDelegate implementation.
@@ -172,7 +160,7 @@
 
 // PhotoFetcherDelegate implementation.
 
-- (void)retrievalCompleted:(NSString*)tag image:(UIImage*)image {
+- (void)photoRetrievalCompleted:(NSString*)tag image:(UIImage*)image {
 	[picView setImage:image];
 }
 

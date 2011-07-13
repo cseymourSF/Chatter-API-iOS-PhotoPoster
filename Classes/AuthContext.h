@@ -26,14 +26,14 @@
 + (AuthContext*)context;
 + (NSURL*)fullLoginUrl;
 
-- (NSString*)getOAuthHeaderValue;
-- (void)addOAuthHeader:(RKRequest*)request;
-- (void)addOAuthHeaderToNSRequest:(NSMutableURLRequest*)request;
 - (BOOL)startGettingAccessTokenWithDelegate:(id<AccessTokenRefreshDelegate>)delegateIn;
-- (void)processCallbackUrl:(NSURL*)callbackUrl;
 - (void)clear;
 - (void)save;
 - (void)load;
+- (NSString*)getOAuthHeaderValue;
+- (void)addOAuthHeader:(RKRequest*)request;
+- (void)addOAuthHeaderToNSRequest:(NSMutableURLRequest*)request;
+- (void)processCallbackUrl:(NSURL*)callbackUrl;
 
 @property(nonatomic, retain) NSString* accessToken;
 @property(nonatomic, retain) NSString* refreshToken;

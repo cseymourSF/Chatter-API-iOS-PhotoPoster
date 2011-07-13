@@ -16,7 +16,7 @@
 @synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-	[[AuthContext context] processCallbackUrl:url];
+	[(RootViewController*)self.navigationController.topViewController processCallbackUrl:url];
 	return YES;	
 }
 
