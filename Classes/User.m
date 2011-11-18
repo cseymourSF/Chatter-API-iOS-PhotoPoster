@@ -23,7 +23,7 @@
 	[userMapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"id" toKeyPath:@"userId"]];
 	[userMapping addAttributeMapping:[RKObjectAttributeMapping mappingFromKeyPath:@"photo.largePhotoUrl" toKeyPath:@"largePhotoUrl"]];
 
-	[manager.router routeClass:[User class] toResourcePath:@"/services/data/v22.0/chatter/users/(userId)" forMethod:RKRequestMethodGET];
+	[manager.router routeClass:[User class] toResourcePath:@"/services/data/v23.0/chatter/users/(userId)" forMethod:RKRequestMethodGET];
 	[manager.mappingProvider addObjectMapping:userMapping];
 }
 

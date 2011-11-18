@@ -63,6 +63,9 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 }
 
 - (void)dealloc {
+	// As reccommended by Apple to avoid memory issues.
+	self.webView.delegate = nil;
+	
 	[self.webView release];
 	
     [super dealloc];

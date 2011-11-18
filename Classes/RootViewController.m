@@ -118,13 +118,14 @@
 }
 
 - (IBAction)login:(id)sender {	
-	// Decide on login approach based on the callback url protocol.
-	if ([[[Config callbackUrl] uppercaseString] hasPrefix:@"HTTP"]) {
-		// If it starts with http or https, use an embedded UIWebView.
+	// We support two options for logging in.
+	if (TRUE) {
+		// Embedded UIWebView (may use a callback URL with a custom scheme
+		// or the "success" https URL).
 		OAuthViewController* oauthViewController = [[[OAuthViewController alloc] init] autorelease];
 		[[self navigationController] pushViewController:oauthViewController animated:YES];
 	} else {
-		// If it starts with a custom prefix, spawn Mobile Safari.
+		// Mobile Safari (must use a callback URL with a custom scheme).
 		[[UIApplication sharedApplication] openURL:[AuthContext fullLoginUrl]];
 	}
 }

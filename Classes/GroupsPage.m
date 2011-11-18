@@ -21,7 +21,7 @@
 	[mapping mapAttributes:@"currentPageUrl", @"previousPageUrl", @"nextPageUrl", @"total", nil];
 	[mapping hasMany:@"groups" withObjectMapping:[Group objectMapping]];
 	
-	[manager.router routeClass:[GroupsPage class] toResourcePath:@"/services/data/v22.0/chatter/users/me/groups" forMethod:RKRequestMethodGET];
+	[manager.router routeClass:[GroupsPage class] toResourcePath:@"/services/data/v23.0/chatter/users/me/groups" forMethod:RKRequestMethodGET];
 	[manager.mappingProvider addObjectMapping:mapping];
 }
 

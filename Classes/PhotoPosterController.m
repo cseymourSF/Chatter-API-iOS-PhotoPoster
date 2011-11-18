@@ -97,7 +97,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 	
 	// Post the photo to the group, using a regular HTTP POST because
 	// RestKit doesn't support multipart binary posts yet.
-	NSString* targetUrl = [NSString stringWithFormat:@"%@/services/data/v22.0/chatter/feeds/record/%@/feed-items", [[AuthContext context] instanceUrl], group.groupId];
+	NSString* targetUrl = [NSString stringWithFormat:@"%@/services/data/v23.0/chatter/feeds/record/%@/feed-items", [[AuthContext context] instanceUrl], group.groupId];
 	
 	// Make the request.
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:targetUrl]

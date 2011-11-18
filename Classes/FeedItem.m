@@ -28,7 +28,7 @@
 	// Assuming that User already registered its mapping.
 	RKObjectMapping* userMapping = [[[RKObjectManager sharedManager] mappingProvider] objectMappingForClass:[User class]];
 
-	[mapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"user" toKeyPath:@"author" objectMapping:userMapping]];
+	[mapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"actor" toKeyPath:@"author" objectMapping:userMapping]];
 	return mapping;	
 }
 
