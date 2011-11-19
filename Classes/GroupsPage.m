@@ -19,7 +19,7 @@
 +(void)setupMapping:(RKObjectManager*)manager {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[GroupsPage class]];
 	[mapping mapAttributes:@"currentPageUrl", @"previousPageUrl", @"nextPageUrl", @"total", nil];
-	[mapping hasMany:@"groups" withObjectMapping:[Group objectMapping]];
+	[mapping hasMany:@"groups" withMapping:[Group objectMapping]];
 	
 	[manager.router routeClass:[GroupsPage class] toResourcePath:@"/services/data/v23.0/chatter/users/me/groups" forMethod:RKRequestMethodGET];
 	[manager.mappingProvider addObjectMapping:mapping];

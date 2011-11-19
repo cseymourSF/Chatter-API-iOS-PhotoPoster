@@ -19,7 +19,7 @@
 +(void)setupMapping:(RKObjectManager*)manager {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[FeedItemPage class]];
 	[mapping mapAttributes:@"currentPageUrl", @"nextPageUrl", nil];
-	[mapping hasMany:@"items" withObjectMapping:[FeedItem objectMapping]];
+	[mapping hasMany:@"items" withMapping:[FeedItem objectMapping]];
 
 	[manager.router routeClass:[FeedItemPage class] toResourcePath:@"/services/data/v23.0/chatter/feeds/record/(recordId)/feed-items" forMethod:RKRequestMethodGET];
 	[manager.mappingProvider addObjectMapping:mapping];
